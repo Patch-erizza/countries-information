@@ -1,0 +1,25 @@
+<div>
+  <h2>Узнайте больше о странах мира!</h2>
+  <input type="text" [formControl]="countryFormControl" id="country-name" placeholder="Введите название страны..."/>
+</div>
+
+
+
+<div *ngFor="let country of countrySearchResult$ | async" (click)="onCountrySelected(country)" class="country-model">
+  <p>Название страны: {{country.name?.common}}</p>
+</div>
+
+<div *ngIf="(selectedCountry$ | async) as selectedCountry">
+  <p>Код страны: {{selectedCountry.alpha2Code}}</p>
+  <p>Название страны: {{selectedCountry.name?.common}}</p>
+  <p>Альтернативное название: {{selectedCountry.altSpellings}}</p>
+  <p>Флаг: {{selectedCountry.flag}}</p>
+  <p>Площадь: {{selectedCountry.area}}</p>
+  <p>Границы: {{selectedCountry.borders}}</p>
+  <p>Столица: {{selectedCountry.capital}}</p>
+  <p>Валюта: {{selectedCountry.currencies}}</p>
+  <p>Языки: {{selectedCountry.languages}}</p>
+  <p>Карта: {{selectedCountry.maps}}</p>
+  <p>Население страны: {{selectedCountry.population}}</p>
+  <p>Регион: {{selectedCountry.region}}</p>
+</div>
